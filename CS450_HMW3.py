@@ -43,11 +43,78 @@ square = lambda x:x**2
 
 
 #Ex3___________________________________________________
-def f():
-  def g():
-    def h():
-      return 3
-    return h
+#def f():
+#  lambda
+#f()()(3)
+
+
+#Ex4___________________________________________________
+#def smth(g, dx):
+
+
+#Ex5___________________________________________________
+def is_prime(x):
+  tmp = x -1
+  while (tmp > 1):
+    if (x % tmp == 0):
+      return False
+    tmp -= 1
+  return True
+
+
+def cnt_cd(f):
+  def g(x):
+    if (x == 1):
+      return 0
+    elif(f(x) or f(x)):
+      return 1 + cnt_cd(f)(x-1)
+    else:
+      return 0 + cnt_cd(f)(x-1)
   return g
 
-f()()(3)
+#cnt_cd(lambda n,i: n % i == 0)(2)
+#cnt_cd(is_prime)(2)
+#cnt_cd(is_prime)(3)
+#cnt_cd(is_prime)(4)
+#cnt_cd(is_prime)(5)
+#cnt_cd(is_prime)(20)
+
+
+
+#Ex6___________________________________________________
+def get_Digit(x):
+  return x%10
+def card_sum(n):
+  result = 0
+  i = 1
+  while (n > 0):
+    if (i % 2 != 0):
+      result += get_Digit(n)
+    else:
+      if (get_Digit(n)*2 > 9):
+        result += 1 + (get_Digit(n*2))
+      else:
+        result += get_Digit(n*2)
+    n //= 10
+    i += 1
+  return result
+
+
+#card_sum(2)
+#card_sum(12)
+#card_sum(42)
+#card_sum(138743)
+#card_sum(5105105105105100)
+#card_sum(4012888888881881)
+#card_sum(79927398713)
+
+
+
+#Ex7___________________________________________________
+def letter_to_n(x):
+  return ord(x)-97
+def n_to_letter(x):
+  return chr(x+97)
+#def generator(n, operation):
+letter_to_n('a')
+n_to_letter(0)
