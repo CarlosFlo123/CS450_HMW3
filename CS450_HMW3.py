@@ -1,3 +1,11 @@
+##################################################
+## Author: Carlos Flores Valero
+## Copyright: Copyright {2019}, {CS450_HMW3}
+## Credits: Alex Yang
+## Email: carlosfloresvalero@gmail.com
+## Description: Some lambda and nested function samples
+##################################################
+
 #Ex1___________________________________________________
 def incr(x):
   return (x + 1)
@@ -24,6 +32,7 @@ def intscts(f, x):
 #at_one(triple)
 
 
+
 #Ex2___________________________________________________
 def add(g1, g2):
   def g(y):
@@ -43,13 +52,27 @@ square = lambda x:x**2
 
 
 #Ex3___________________________________________________
-#def f():
-#  lambda
-#f()()(3)
+def f():
+  def g():
+    def h(x):
+      print(x)
+      def i():
+        pass
+      return i
+    return h
+  return g
+
+#f()()(3)()
+
 
 
 #Ex4___________________________________________________
-#def smth(g, dx):
+def smth(g, dx):
+  return lambda x: ((g(x-dx) + g(x) + g(x + dx))/3)
+
+#square = lambda x:x**2
+#print(round(smth(square, 1)(0), 3))
+
 
 
 #Ex5___________________________________________________
@@ -112,9 +135,41 @@ def card_sum(n):
 
 #Ex7___________________________________________________
 def letter_to_n(x):
-  return ord(x)-97
+  if (x >= 'A' and x <= 'Z'):
+    return ord(x)-65
+  else:
+    return ord(x)-97
 def n_to_letter(x):
-  return chr(x+97)
-#def generator(n, operation):
-letter_to_n('a')
-n_to_letter(0)
+  if (x >= 26 and x <= 51):
+    return chr(x+39)
+  else:
+    return chr(x+97)
+
+def add(x,n):
+  x = letter_to_n(x)
+  while (n > 0):
+    x += 1
+    n -= 1
+  return n_to_letter(x)
+def sub(x,n):
+  x = letter_to_n(x)
+  while (n > 0):
+    x -= 1
+    n -= 1
+  return n_to_letter(x)
+def generator(n, operation):
+  return lambda x:(operation(x,n))
+
+#letter_to_n('a')
+#letter_to_n('c')
+#n_to_letter(3)
+#h = generator(2, add)
+#h('a')
+#h = generator(3, sub)
+#h('d')
+
+
+
+#Ex8___________________________________________________
+#def cyc(g1,g2,g3):
+#  def h():
